@@ -49,19 +49,16 @@ def move_zeros_and_calculate_sum(text_lines, cycles):
 
         # Convert the matrix to a string with direction and check for repetition
         state = matrix_state_with_direction(matrix, direction)
-        if state in seen_states:
-            print(f"Repeating pattern found at cycle {i + 1} in direction {direction}")
-        else:
+        if state not in seen_states:
             seen_states.add(state)
 
     return find_sum(matrix)
 
-# Other functions remain the same
 
 # Read the file and run the process
 with open('input.txt', 'r') as f:
     data = f.readlines()
 
 # Check for repeating patterns in 4,000,000,000 cycles
-total_sum = move_zeros_and_calculate_sum(data, 1001)
+total_sum = move_zeros_and_calculate_sum(data, 4000)
 print(total_sum)
