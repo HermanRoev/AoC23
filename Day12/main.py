@@ -1,15 +1,9 @@
 def count_arrangements_simple(line):
-    """
-    Simplified function to count the number of valid arrangements for a given line of spring conditions and group sizes.
-    """
     parts = line.split()
     conditions = parts[0]  # Condition of each spring
     group_sizes = list(map(int, parts[1].split(',')))  # Sizes of groups of damaged springs
 
     def generate_combinations(conditions):
-        """
-        Generate all possible combinations by replacing '?' with either '.' or '#'.
-        """
         if '?' not in conditions:
             return [conditions]
 
@@ -22,9 +16,6 @@ def count_arrangements_simple(line):
         return generate_combinations(with_dot) + generate_combinations(with_hash)
 
     def is_valid_combination(combination):
-        """
-        Check if a given combination of springs meets the criteria.
-        """
         group_counts = []
         count = 0
         for spring in combination:
@@ -46,9 +37,13 @@ def count_arrangements_simple(line):
     return valid_combinations
 
 
+
+
+
 with open('input.txt') as f:
     data = f.readlines()
 
-# Test the simplified function with the provided example data
-#total_arrangements_simple = sum(count_arrangements_simple(line) for line in data)
-#print(total_arrangements_simple)
+
+
+total_arrangements_simple = sum(count_arrangements_simple(line) for line in data)
+print(total_arrangements_simple)
